@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEATH PENALTY — Resident Evil 4 UHD Mod</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --void:       #0a0806;
+    --void-2:     #14100c;
+    --blood-deep: #2e0505;
+    --blood:      #7c0e0e;
+    --blood-bright: #d31f1f;
+    --bone:       #d9cdb6;
+    --bone-dim:   #9c8f79;
+    --rust:       #4a3a28;
+    --rust-light: #6b5238;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--void);
+    color:var(--bone);
+    font-family:'EB Garamond', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* film grain overlay used on both sections */
+  .grain{
+    pointer-events:none;
+    position:absolute;
+    inset:0;
+    opacity:.18;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow:hidden;
+    isolation:isolate;
+  }
+
+  .hero__bg{
+    position:absolute;
+    inset:0;
+    background-image:url("https://i.pinimg.com/736x/16/9b/cf/169bcf91a42d2a4d2542f69513f57dfd.jpg");
+    background-size:cover;
+    background-position:center 30%;
+    filter:saturate(.75) contrast(1.15) brightness(.55);
+    transform:scale(1.04);
+    z-index:-3;
+  }
+
+  .hero__wash{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    background:
+      radial-gradient(ellipse at 50% 40%, rgba(20,4,4,0) 0%, rgba(10,6,4,.55) 55%, rgba(8,5,3,.96) 100%),
+      linear-gradient(to bottom, rgba(8,6,4,.75) 0%, rgba(8,6,4,.15) 30%, rgba(8,6,4,.35) 70%, rgba(6,4,3,.97) 100%),
+      linear-gradient(120deg, rgba(80,10,10,.22), rgba(0,0,0,0) 45%);
+  }
+
+  .hero__grain{ z-index:-1; }
+
+  .hero__top{
+    position:relative;
+    z-index:1;
+    padding:6vh 6vw 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    font-family:'Cinzel', serif;
+    font-size:.7rem;
+    letter-spacing:.35em;
+    color:var(--bone-dim);
+  }
+
+  .hero__top span{ color:var(--blood-bright); }
+
+  .hero__main{
+    position:relative;
+    z-index:1;
+    text-align:center;
+    padding:0 6vw;
+    margin-top:8vh;
+  }
+
+  .hero__title{
+    font-family:'Nosifer', serif;
+    font-weight:400;
+    line-height:.95;
+    font-size:clamp(2.8rem, 10vw, 8rem);
+    letter-spacing:.02em;
+    margin:0;
+    color:#b21414;
+    text-shadow:
+      0 0 6px rgba(0,0,0,.9),
+      0 0 26px rgba(180,10,10,.55),
+      0 0 70px rgba(120,5,5,.4),
+      0 4px 0 #1a0202;
+    animation:flicker 6s infinite ease-in-out;
+  }
+
+  @keyframes flicker{
+    0%, 19%, 21%, 23%, 51%, 53%, 100%{
+      text-shadow:
+        0 0 6px rgba(0,0,0,.9),
+        0 0 26px rgba(180,10,10,.55),
+        0 0 70px rgba(120,5,5,.4),
+        0 4px 0 #1a0202;
+      opacity:1;
+    }
+    20%, 22%, 52%{
+      text-shadow:
+        0 0 2px rgba(0,0,0,.9),
+        0 0 10px rgba(150,5,5,.3);
+      opacity:.85;
+    }
+  }
+
+  .hero__rule{
+    width:120px;
+    height:1px;
+    margin:2.2rem auto;
+    background:linear-gradient(to right, transparent, var(--rust-light), transparent);
+  }
+
+  .hero__desc{
+    font-size:clamp(1.05rem, 1.6vw, 1.35rem);
+    font-style:italic;
+    color:var(--bone-dim);
+    max-width:520px;
+    margin:0 auto;
+    letter-spacing:.02em;
+  }
+
+  .havefun{
+    display:inline-block;
+    font-weight:600;
+    font-style:normal;
+    color:var(--blood-bright);
+    animation:bloodpulse 2.6s infinite ease-in-out;
+  }
+
+  @keyframes bloodpulse{
+    0%, 100%{ color:#4a0808; opacity:.55; text-shadow:0 0 2px rgba(80,0,0,.2); }
+    50%{ color:#ff2222; opacity:1; text-shadow:0 0 14px rgba(255,20,20,.85), 0 0 28px rgba(200,0,0,.5); }
+  }
+
+  .hero__bottom{
+    position:relative;
+    z-index:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2.4rem;
+    padding:0 6vw 7vh;
+  }
+
+  .btn-download{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:.75rem;
+    font-family:'Cinzel', serif;
+    font-weight:700;
+    font-size:.95rem;
+    letter-spacing:.22em;
+    text-decoration:none;
+    color:var(--bone);
+    background:linear-gradient(180deg, #1c1210, #0e0908);
+    border:1px solid var(--rust-light);
+    padding:1rem 2.4rem;
+    overflow:hidden;
+    transition:color .35s ease, border-color .35s ease, letter-spacing .35s ease;
+  }
+
+  .btn-download::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 50% 120%, var(--blood-bright) 0%, var(--blood) 35%, transparent 70%);
+    transform:scaleY(0);
+    transform-origin:bottom;
+    transition:transform .45s cubic-bezier(.7,0,.3,1);
+    z-index:0;
+  }
+
+  .btn-download span{ position:relative; z-index:1; }
+
+  .btn-download:hover{
+    border-color:var(--blood-bright);
+    letter-spacing:.28em;
+  }
+
+  .btn-download:hover::before{ transform:scaleY(1); }
+
+  .scroll-cue{
+    font-family:'Cinzel', serif;
+    font-size:.65rem;
+    letter-spacing:.3em;
+    color:var(--bone-dim);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:.5rem;
+  }
+
+  .scroll-cue::after{
+    content:"";
+    width:1px;
+    height:34px;
+    background:linear-gradient(to bottom, var(--rust-light), transparent);
+    animation:drip 2.4s infinite ease-in-out;
+  }
+
+  @keyframes drip{
+    0%{ height:8px; opacity:.2; }
+    50%{ height:34px; opacity:1; }
+    100%{ height:8px; opacity:.2; }
+  }
+
+  /* ---------- TUTORIAL SECTION ---------- */
+
+  .tutorial{
+    position:relative;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(60,8,8,.16), transparent 60%),
+      var(--void-2);
+    padding:9vh 6vw 10vh;
+    overflow:hidden;
+  }
+
+  .tutorial__heading{
+    text-align:center;
+    margin-bottom:6vh;
+  }
+
+  .tutorial__eyebrow{
+    display:block;
+    font-family:'Cinzel', serif;
+    font-size:.7rem;
+    letter-spacing:.4em;
+    color:var(--blood-bright);
+    margin-bottom:1.1rem;
+  }
+
+  .tutorial__title{
+    font-family:'Nosifer', serif;
+    font-weight:400;
+    font-size:clamp(1.7rem, 4.6vw, 3.3rem);
+    color:#b21414;
+    margin:0;
+    text-shadow:0 0 30px rgba(120,5,5,.35), 0 3px 0 #150202;
+  }
+
+  .tutorial__grid{
+    display:grid;
+    grid-template-columns:1fr 1px 1fr;
+    gap:0 4.5rem;
+    max-width:1180px;
+    margin:0 auto;
+    align-items:center;
+  }
+
+  .tutorial__divider{
+    align-self:stretch;
+    background:linear-gradient(to bottom, transparent, var(--rust-light) 15%, var(--blood) 50%, var(--rust-light) 85%, transparent);
+  }
+
+  .video-frame{
+    position:relative;
+    border:1px solid var(--rust);
+    box-shadow:0 0 0 6px rgba(0,0,0,.4), 0 20px 60px rgba(0,0,0,.6);
+    cursor:pointer;
+    background:#000;
+  }
+
+  .video-frame video{
+    display:block;
+    width:100%;
+    aspect-ratio:16/9;
+    background:#000;
+  }
+
+  .video-frame__overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.65));
+    transition:opacity .4s ease;
+  }
+
+  .video-frame.is-playing .video-frame__overlay{
+    opacity:0;
+    pointer-events:none;
+  }
+
+  .play-btn{
+    width:74px;
+    height:74px;
+    border-radius:50%;
+    border:1px solid var(--blood-bright);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(20,8,8,.55);
+    box-shadow:0 0 24px rgba(200,20,20,.35);
+    transition:transform .3s ease;
+  }
+
+  .video-frame:hover .play-btn{ transform:scale(1.08); }
+
+  .play-btn::after{
+    content:"";
+    border-style:solid;
+    border-width:11px 0 11px 18px;
+    border-color:transparent transparent transparent var(--bone);
+    margin-left:5px;
+  }
+
+  .video-caption{
+    font-family:'Cinzel', serif;
+    font-size:.65rem;
+    letter-spacing:.25em;
+    color:var(--bone-dim);
+    text-align:center;
+    margin-top:1rem;
+  }
+
+  .steps{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  .steps li{
+    display:flex;
+    gap:1.6rem;
+    padding:1.6rem 0;
+    border-bottom:1px solid rgba(107,82,56,.35);
+  }
+
+  .steps li:first-child{ padding-top:0; }
+  .steps li:last-child{ border-bottom:none; }
+
+  .steps__num{
+    font-family:'Nosifer', serif;
+    font-size:1.7rem;
+    color:var(--blood);
+    line-height:1;
+    flex:0 0 auto;
+    text-shadow:0 0 16px rgba(120,5,5,.4);
+  }
+
+  .steps__text{
+    font-size:1.15rem;
+    line-height:1.5;
+    color:var(--bone);
+    padding-top:.15rem;
+  }
+
+  .steps__text em{
+    font-style:italic;
+    color:var(--blood-bright);
+  }
+
+  footer{
+    text-align:center;
+    padding:3.2rem 6vw;
+    background:var(--void);
+    font-family:'Cinzel', serif;
+    font-size:.65rem;
+    letter-spacing:.25em;
+    color:var(--bone-dim);
+    border-top:1px solid rgba(107,82,56,.3);
+  }
+
+  @media (max-width:860px){
+    .tutorial__grid{
+      grid-template-columns:1fr;
+      gap:3rem 0;
+    }
+    .tutorial__divider{ display:none; }
+    .hero__top{ font-size:.6rem; letter-spacing:.25em; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .hero__title, .havefun, .scroll-cue::after{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__wash"></div>
+  <div class="grain hero__grain"></div>
+
+  <div class="hero__top">
+    <span>Resident Evil 4 <span>·</span> UHD Overhaul</span>
+    <span>Village <span>·</span> Castle <span>·</span> Island</span>
+  </div>
+
+  <div class="hero__main">
+    <h1 class="hero__title">DEATH PENALTY</h1>
+    <div class="hero__rule"></div>
+    <p class="hero__desc">This mod is only for professional players. <span class="havefun">Have Fun !</span></p>
+  </div>
+
+  <div class="hero__bottom">
+    <a class="btn-download" href="https://www.mediafire.com/file/i1ph4h7p0eruy4z/DEATH_PENALTY.zip/file" target="_blank" rel="noopener">
+      <span>Download the Mod</span>
+    </a>
+    <div class="scroll-cue">HOW TO INSTALL</div>
+  </div>
+</section>
+
+<section class="tutorial" id="how-to-play">
+  <div class="grain"></div>
+
+  <div class="tutorial__heading">
+    <span class="tutorial__eyebrow">Installation Guide</span>
+    <h2 class="tutorial__title">HOW TO PLAY THE MOD ?</h2>
+  </div>
+
+  <div class="tutorial__grid">
+    <div>
+      <div class="video-frame" id="videoFrame">
+        <video id="tutorialVideo" src="Tutorial.mp4" playsinline></video>
+        <div class="video-frame__overlay">
+          <div class="play-btn"></div>
+        </div>
+      </div>
+      <p class="video-caption">Watch the Installation Tutorial</p>
+    </div>
+
+    <div class="tutorial__divider"></div>
+
+    <div>
+      <ol class="steps">
+        <li>
+          <span class="steps__num">01</span>
+          <span class="steps__text">Extract <em>"Death Penalty.zip"</em></span>
+        </li>
+        <li>
+          <span class="steps__num">02</span>
+          <span class="steps__text">Copy the <em>"BIO4"</em> and <em>"BIN32"</em> folders and paste them in the game folder</span>
+        </li>
+        <li>
+          <span class="steps__num">03</span>
+          <span class="steps__text">Run the game and have fun !</span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>Death Penalty — A Resident Evil 4 UHD Mod</footer>
+
+<script>
+  const frame = document.getElementById('videoFrame');
+  const video = document.getElementById('tutorialVideo');
+
+  frame.addEventListener('click', () => {
+    if(video.paused){
+      video.play();
+      video.setAttribute('controls', '');
+      frame.classList.add('is-playing');
+    } else {
+      video.pause();
+    }
+  });
+
+  video.addEventListener('pause', () => {
+    if(video.currentTime === 0 || video.ended) frame.classList.remove('is-playing');
+  });
+</script>
+
+</body>
+</html>
